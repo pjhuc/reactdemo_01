@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       你好 react 组件
       <Home/>
-      <News />
+      {/* <News /> */}
     </div>
   );
 }
