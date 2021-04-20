@@ -4,6 +4,7 @@ import Home from './components/Home';
 import News from './components/News';
 import ListD from './components/List';
 import ToDoList from './components/ToDoList';
+import ReactForm from './components/ReactForm';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <Home/> */}
       {/* <News /> */}
       {/* <ListD/> */}
-      <ToDoList/>
+      {/* <ToDoList/> */}
+      <ReactForm/>
     </div>
   );
 }
