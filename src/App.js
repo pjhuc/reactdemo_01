@@ -13,8 +13,8 @@ function App() {
       {/* <Home/> */}
       {/* <News /> */}
       {/* <ListD/> */}
-      {/* <ToDoList/> */}
-      <ReactForm/>
+      <ToDoList/>
+      {/* <ReactForm/> */}
     </div>
   );
 }

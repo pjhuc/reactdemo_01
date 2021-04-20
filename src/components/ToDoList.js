@@ -1,34 +1,50 @@
 import React, {Component } from 'react';
 
 import '../assets/css/index.css'
-/* 双向数据绑定 */
+
 export default class ToDoList extends Component{
     constructor(props){
         super(props);
         this.state={
-            username:'111'
+            list:[]
         }
     }
-    inputVlaue=(e)=>{
+
+    addData=() =>{
+        // alert(this.refs.tto.value);
+        var tempList = this.state.list;
+        tempList.push(this.refs.tto.value);
+        this.refs.tto.value='';
         this.setState({
-            username:e.target.value
+            list:tempList
         })
     }
-    changeUserName=()=>{
+
+    removeDate(key) {
+        alert(key);
+        var tempList = this.state.list;
+        tempList.splice(key,1);
         this.setState({
-            username:'李四'
+            list:tempList
         })
     }
+
     render(){
         return (
-        <div>
-            <h2>双向数据绑定</h2>
-            {/* model改变影响View  view改变反过来影响model */}
-            <input onChange={this.inputVlaue} value={this.state.username} />
-            <p>{this.state.username}</p>
-            {/* state中的值改变，就会重新渲染页面 */}
-            <button onClick={this.changeUserName}>model影响view</button>
-        </div>
+            <div>
+                <h2>ToDoList待办演示案例</h2>
+                <input type="text" ref="tto" /><button onClick={this.addData}>增加+</button>
+                <hr/>
+                <ul className="list">
+                    {
+                        this.state.list.map((value,key)=>{
+                            return(
+                                <li key={key}>{value}<button onClick={this.removeDate.bind(this,key)}>删除-</button></li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
         )
     }
 }
