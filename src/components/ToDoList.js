@@ -1,5 +1,7 @@
 import React, {Component, useDebugValue } from 'react';
 
+import storage from '../model/storage';
+
 import '../assets/css/index.css'
 
 export default class ToDoList extends Component{
@@ -37,10 +39,15 @@ export default class ToDoList extends Component{
                 title:val,
                 checked:false
             })
-            this.refs.title.value='';
+            
             this.setState({
                 list:tempList
             })
+            //缓存数据
+            
+            // localStorage.setItem('todolist',JSON.stringify(tempList));
+            this.refs.title.value='';
+            storage.set('todolist',tempList);
         }
     }
 
@@ -51,6 +58,9 @@ export default class ToDoList extends Component{
         this.setState({
             list:tempList
         })
+        //缓存数据
+        // localStorage.setItem('todolist',JSON.stringify(tempList));
+        storage.set('todolist',tempList);
     }
 
     removeData=(key)=>{
@@ -59,8 +69,23 @@ export default class ToDoList extends Component{
         this.setState({
             list:tempList
         })
+        //缓存数据
+        // localStorage.setItem('todolist',JSON.stringify(tempList));
+        storage.set('todolist',tempList);
     }
 
+    //声明周期函数  页面加载就会触发
+    componentDidMount(){
+        //获取缓存中的数据
+        var todolist = storage.get('todolist');
+        if(todolist){
+            this.setState({
+                list:todolist
+            })
+        }
+    }
+
+    
     render(){
         return(
             <div>
@@ -71,7 +96,7 @@ export default class ToDoList extends Component{
                         this.state.list.map((value,key)=>{
                             if(!value.checked) {
                                 return (
-                                    <li>
+                                    <li key={key}>
                                         <input type="checkbox" checked={value.checked} onChange={this.changeData.bind(this,key)} />
                                         {value.title}
                                         <button onClick={this.removeData.bind(this,key)}>--删除</button>
@@ -89,7 +114,7 @@ export default class ToDoList extends Component{
                         this.state.list.map((value,key)=>{
                             if(value.checked) {
                                 return (
-                                    <li>
+                                    <li key={key}>
                                         <input type="checkbox" checked={value.checked} onChange={this.changeData.bind(this,key)} />
                                         {value.title}
                                         <button onClick={this.removeData.bind(this,key)}>--删除</button>
