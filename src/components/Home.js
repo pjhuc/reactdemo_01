@@ -1,5 +1,6 @@
 import { getDefaultNormalizer } from '@testing-library/dom';
 import React, {Component } from 'react';
+import Header from '../components/Header';
 
 import '../assets/css/index.css'
 /*
@@ -16,25 +17,16 @@ export default class Home extends Component{
     constructor(props){
         super(props);
         this.state={
-          username:'11111'
+          username:'我是首页组件',
+          title:'首页组件'
         }
     }
-    handleUsername=(e)=>{
 
-      this.setState({
-        username:e.target.value
-      })
-    }
     render(){
         return (
         <div>
-           <h1>React表单</h1>
-              {/* MVVM */}
-              <input type="text" value={this.state.username} onChange={this.handleUsername} />
-              {this.state.username}
-              <br />
-              {/* MV */}
-              <input type="text" defaultValue={this.state.username}  />
+          <Header title={this.state.title}/>
+          我是首页组件的内容
         </div>
         )
     }

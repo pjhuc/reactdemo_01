@@ -1,4 +1,6 @@
 import React, {Component } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 import '../assets/css/index.css'
 
@@ -8,40 +10,42 @@ export default class News extends Component{
         super();
         //react定义数据
         this.state={
-
-            list:['11111111111111','222222222','333333333333'],
-            list2:[<h2>我是一个好</h2>,<h2>我是一个好</h2>],
-            list3:[
-                {title:"新闻111111111"},
-                {title:"新闻22222222222"},
-                {title:"新闻333333333"},
-                {title:"新闻444444444444"}
-            ]
+            title:'新闻组件',
+            msg:'我是新闻组件的msg'
         }
+    }
+
+    run=()=>{
+        alert('我是新闻组件的run方法！！');
+    }
+
+    getData=()=>{
+        alert(this.state.title+"新闻组件的getData方法");
+    }
+
+    getChildData=(result)=>{
+        alert(result);
+        this.setState({
+            msg:result
+        })
+    }
+
+    execChildMethed=()=>{
+        //获取子组件(Footer)的属性值
+        alert(this.refs.footer.state.msg);
+        //执行子组件(Footer)的方法
+        this.refs.footer.footerRun();
     }
     
     render(){
-        /* 第一种  list循环方式 */
-        var listResult = this.state.list.map(function(value,key){
-            return <li>{value}</li>
-        })
-        return (
-        <div>
-            {listResult}
-            {/* 第二种  list循环方式 */}
-            <li>{this.state.list2}</li>
-            <hr/>
-            {/* 第三种  list循环方式 */}
-            <ul>
-                {
-                    this.state.list3.map(function(value,key){
-                        return (<li key={key}>{value.title}</li>);
-                    })
-                }
-            </ul>
-            
-        </div>
-        
+        return(
+            <div>
+                <Header title={this.state.title} run={this.run} news={this} />
+                我是新闻组件内容--{this.state.msg}
+                <hr/>
+                <button onClick={this.execChildMethed}>获取整个底部组件</button>
+                <Footer ref="footer"/>
+            </div>
         )
     }
 }
