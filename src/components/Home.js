@@ -1,5 +1,6 @@
 import { getDefaultNormalizer } from '@testing-library/dom';
 import React, {Component } from 'react';
+import Header from '../components/Header';
 
 import '../assets/css/index.css'
 /*
@@ -17,9 +18,8 @@ export default class Home extends Component{
     render(){
         return (
         <div>
-          <Home title={this.state.title}/>
-            {this.state.username}
-            <hr/>
+          <Header title={this.state.title}/>
+          我是首页组件的内容
         </div>
         )
     }

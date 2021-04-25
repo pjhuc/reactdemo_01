@@ -10,14 +10,13 @@ import Header from './components/Header';
 function App() {
   return (
     <div className="App">
-      
-      <hr/>
-      <Home/>
-      {/* <News /> */}
+      {/* 你好 react 组件 */}
+      {/* <Home/> */}
+      <News />
       {/* <ListD/> */}
       {/* <ToDoList/> */}
       {/* <ReactForm/> */}
-      <Header/>
+      {/* <Header/> */}
     </div>
   );
 }
