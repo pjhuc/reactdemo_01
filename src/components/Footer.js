@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
 
+/* 这个组件是演示：父组件获取子组件的属性 和 调用子组件的方法 */
 export default class Footer extends Component {
     constructor(props){
         super(props);

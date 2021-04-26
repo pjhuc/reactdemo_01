@@ -9,7 +9,7 @@ export default class Header extends Component {
     }
 
     getNews=()=>{
-        //获取组附件的值
+        //获取父组附件的值
         alert(this.props.news.state.msg);
         //执行父组件的方法
         this.props.news.getData();
@@ -23,7 +23,7 @@ export default class Header extends Component {
                 <br/>
                 <button onClick={this.props.news.getData} >将整个父组件传给子组件，并执行getData方法</button>
                 <br/>
-                <button onClick={this.getNews} >子组件中的方法获取父组件中的值</button>
+                <button onClick={this.getNews} >子组件中的方法获取父组件中的msg值</button>
                 <br/>
                 <button onClick={this.props.news.getChildData.bind(this,'我是子组件穿过来的值！！！')} >子组件给父组件传值</button>
                 {/* {this.state.msg} */}
