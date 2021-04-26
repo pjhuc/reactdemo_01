@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       {/* 你好 react 组件 */}
-      {/* <Home/> */}
-      <News />
+      <Home/>
+      {/* <News /> */}
       {/* <ListD/> */}
       {/* <ToDoList/> */}
       {/* <ReactForm/> */}
