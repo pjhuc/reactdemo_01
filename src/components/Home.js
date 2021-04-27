@@ -1,33 +1,60 @@
+/*
+    react获取服务器APi接口的数据：
+        react中没有提供专门的请求数据的模块。但是我们可以使用任何第三方请求数据模块实现请求数据
+        1、axios          https://github.com/axios/axios       axios的作者觉得jsonp不太友好，推荐用CORS方式更为干净（后端运行跨域）
+                1、安装axios模块npm install axios  --save   /  npm install axios  --save
+                2、在哪里使用就在哪里引入import axios from 'axios'
+                3、看文档使用
+                var api='http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20';
+                axios.get(api)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        2、fetch-jsonp    https://github.com/camsong/fetch-jsonp
+                1、安装 npm install fetch-jsonp  --save
+                2、import fetchJsonp from 'fetch-jsonp'
+                3、看文档使用
+                fetchJsonp('/users.jsonp')
+                .then(function(response) {
+                    return response.json()
+                }).then(function(json) {
+                    console.log('parsed json', json)
+                }).catch(function(ex) {
+                    console.log('parsing failed', ex)
+                })
+        3、其他请求数据的方法也可以...自己封装模块用原生js实现数据请求也可以...
+    远程测试API接口：
+    get请求：
+        http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20
+    jsonp请求地址:
+        http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&callback=?
+*/
+
 import { getDefaultNormalizer } from '@testing-library/dom';
-import React, {Component } from 'react';
-import Header from '../components/Header';
+import React, { Component } from 'react';
+import Axios from '../components/Axios';
+import FetchJsonp from '../components/FetchJsonp';
 
 import '../assets/css/index.css'
-/*
-父组件给子组件传值：
-    defaultProps:父子组件传值中，如果父组件调用子组件的时候不给子组件传值，可以在子组件中使用defaultProps定义的 默认值
-    propTypes：验证父组件传值的 类型 合法性
-            1、引入import PropTypes from 'prop-types';
-            2、类.propTypes = {
-                name: PropTypes.string
-            };
-    都是定义在子组件里面
-https://reactjs.org/docs/typechecking-with-proptypes.html
-*/
-export default class Home extends Component{
-    constructor(props){
+
+export default class Home extends Component {
+    constructor(props) {
         super(props);
-        this.state={
-          title:'首页组件',
-          num:2222222222222222
+        this.state = {
+            title: '首页组件',
+            num: 2222222222222222
         }
     }
 
-    render(){
+    render() {
         return (
-        <div>
-          <Header title={this.state.title} num={this.state.num}/>
-        </div>
+            <div>
+                {/* <Axios /> */}
+                <FetchJsonp />
+            </div>
         )
     }
 }
