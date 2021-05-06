@@ -1,57 +1,52 @@
-import logo from './assets/images/logo.svg';
-import './assets/css/App.css';
+/*
+  react路由的配置：
+    1、找到官方文档 https://reacttraining.com/react-router/web/example/basic
+    2、安装  cnpm install react-router-dom --save
+    3、找到项目的根组件引入 react-router-dom
+       import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+    4、复制官网文档根组件里面的内容进行修改  （加载的组件要提前引入）
+         <Router>
+                <Link to="/">首页</Link>
+                <Link to="/news">新闻</Link>
+                <Link to="/product">商品</Link>
+
+                <Route exact path="/" component={Home} />
+                <Route path="/news" component={News} />    
+                <Route path="/product" component={Product} />   
+         </Router>
+         exact表示严格匹配
+*/
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import './assets/css/index.css'
 import Home from './components/Home';
 import News from './components/News';
-import ListD from './components/List';
-import ToDoList from './components/ToDoList';
-import ReactForm from './components/ReactForm';
-import Header from './components/Header';
-import Lifecycle from './components/Lifecycle';
-import { Component } from 'react';
+import Product from './components/Product';
+import Content from './components/Content';
+import ProductContent from './components/ProductContent';
 
-export default class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      flag: true,
-      title: '我是App组件的title'
-    }
-  }
-  setFlag = () => {
-    this.setState({
-      flag: !this.state.flag
-
-    })
-  }
-  setTitle = () => {
-    this.setState({
-      title: '我是App组件改变后的title值'
-
-    })
-  }
+class App extends Component {
   render() {
     return (
-      <div className="App">
-        {/* 你好 react 组件 */}
-        {/* <Home/> */}
-        {/* <News /> */}
-        {/* <ListD/> */}
-        {/* <ToDoList/> */}
-        {/* <ReactForm/> */}
-        {/* <Header/> */}
-        <hr />
-        <br />
-        {
-          this.state.flag ? <Lifecycle title={this.state.title} /> : ""
-        }
-        <hr />
-        <br />
-        <button onClick={this.setFlag}>点击</button>
-        <hr />
-        <br />
-        <button onClick={this.setTitle}>改变title</button>
-      </div>
+      <Router>
+        <div>
+          <header className="title">
+            <Link to="/">首页</Link>
+            <Link to="/news">新闻</Link>
+            <Link to="/product">商品</Link>
+          </header>
+          <br />
+          <hr />
+          <br />
+          <Route exact path="/" component={Home} />{/* exact表示严格匹配 */}
+          <Route path="/news" component={News} />
+          <Route path="/product" component={Product} />
+          <Route path="/content/:aid" component={Content} />
+          <Route path="/productcontent" component={ProductContent} />
+          {/* <Content/> */}
+        </div>
+      </Router>
     );
   }
 }
+export default App;
