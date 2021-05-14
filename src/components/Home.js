@@ -34,6 +34,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
+                <button><Link to="/login">跳转到登陆页面</Link></button>
                 <div className="list">
                     {
                         this.state.list.map((value, key) => {
