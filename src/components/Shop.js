@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import { Button } from 'antd';
+import { Icon } from '@ant-design/compatible';
+
 import ShopAdd from './Shop/ShopAdd';
 import ShopList from './Shop/ShopList';
 
@@ -27,6 +30,8 @@ class Shop extends Component {
                         <br />
                         <br />
                         <Link to="/shop/edit">编辑商户</Link>
+                        <Button type="primary">Primary Button</Button>
+                        <Icon className="red" type="vertical-align-top" />
                     </div>
                     <div className="right">
                         {

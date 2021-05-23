@@ -1,4 +1,7 @@
 @charset "UTF-8";
+
+@import 'antd/dist/antd.css';
+
 body, div, ul, li, ol, h1, h2, h3, h4, h5, h6, input, textarea, select, p, dl, dt, dd, a, img, button, form, table, th, tr, td, tbody, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   margin: 0;
   padding: 0; }
@@ -254,3 +257,23 @@ strong {
   border:1px solid #000;
 }
 
+.red{
+  color: red;
+  font-size: 50px;
+}
+
+.app .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.app .site-layout-background {
+  background: #fff;
+}
+
+.site-calendar-demo-card {
+  width: 300px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+}
